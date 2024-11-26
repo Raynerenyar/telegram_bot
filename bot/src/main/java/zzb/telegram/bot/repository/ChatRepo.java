@@ -23,6 +23,7 @@ public interface ChatRepo extends JpaRepository<Chat, String> {
 			@Param("nextDrawReceived") boolean nextDrawReceived);
 
 	@Modifying
+	@Transactional
 	@Query("UPDATE Chat c SET c.nextDrawReceived = :nextDrawReceived where c.chatId IN :chatIds")
 	public void updateChatsNextDrawReceived(
 			@Param("nextDrawReceived") boolean nextDrawReceived,
